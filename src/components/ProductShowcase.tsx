@@ -4,74 +4,57 @@ import productCan from "@/assets/product-can.jpg";
 
 const products = [
   {
-    title: "Dòng Túi Lọc",
-    subtitle: "Drip Bag Collection",
-    description: "Tiện lợi, giữ trọn hương vị. Pha cà phê chất lượng mọi lúc mọi nơi.",
+    title: "Cà Phê Nhân cho\nNhà Rang Xay",
+    subtitle: "CUNG ỨNG",
     image: productDrip,
-    accentClass: "bg-primary",
   },
   {
-    title: "Hạt & Bột",
-    subtitle: "Pulse & Flow",
-    description: "Hạt cà phê nguyên chất từ vùng cao nguyên, rang xay tươi mỗi ngày.",
+    title: "Cà Phê Rang cho\nQuán, Chuỗi F&B",
+    subtitle: "CUNG CẤP",
     image: productBeans,
-    accentClass: "bg-foreground",
   },
   {
-    title: "Dòng Core",
-    subtitle: "Tin Can Premium",
-    description: "Cà phê đóng lon cao cấp. Đậm đà, tiện lợi, phong cách hiện đại.",
+    title: "Menu Thức Uống\nvà Vận Hành Quầy",
+    subtitle: "SETUP & HUẤN LUYỆN",
     image: productCan,
-    accentClass: "bg-primary",
   },
 ];
 
 const ProductShowcase = () => {
   return (
-    <section id="products" className="section-padding bg-secondary">
+    <section id="products" className="section-padding">
       <div className="container mx-auto px-4 lg:px-8">
-        <div className="text-center mb-16 fade-in-up">
-          <span className="text-primary font-heading font-semibold text-sm tracking-[0.2em] uppercase mb-4 block">
-            Sản phẩm
-          </span>
-          <h2 className="font-heading font-bold text-3xl md:text-4xl lg:text-5xl text-foreground">
-            Bộ sưu tập TOBE
+        <div className="text-center mb-10 fade-in-up">
+          <h2 className="font-heading font-bold text-2xl md:text-3xl lg:text-4xl text-foreground uppercase tracking-wide">
+            Danh mục sản phẩm
           </h2>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-3 gap-5">
           {products.map((product, index) => (
             <div
               key={product.title}
-              className="fade-in-up group bg-background rounded overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500"
+              className="fade-in-up group relative overflow-hidden rounded h-72 md:h-80 cursor-pointer"
               style={{ transitionDelay: `${index * 100}ms` }}
             >
-              <div className="relative overflow-hidden h-80">
-                <img
-                  src={product.image}
-                  alt={product.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                  loading="lazy"
-                  width={800}
-                  height={800}
-                />
-                <div className={`absolute top-4 left-4 ${product.accentClass} text-primary-foreground text-xs font-heading font-semibold tracking-wider uppercase px-3 py-1 rounded`}>
+              <img
+                src={product.image}
+                alt={product.title}
+                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                loading="lazy"
+                width={800}
+                height={800}
+              />
+              {/* Dark overlay */}
+              <div className="absolute inset-0 bg-foreground/40 group-hover:bg-foreground/50 transition-colors duration-300" />
+              {/* Text overlay */}
+              <div className="absolute bottom-0 left-0 right-0 p-5">
+                <span className="text-primary-foreground/70 font-heading font-semibold text-xs tracking-[0.15em] uppercase block mb-1">
                   {product.subtitle}
-                </div>
-              </div>
-              <div className="p-6">
-                <h3 className="font-heading font-bold text-xl text-foreground mb-2">
+                </span>
+                <h3 className="font-heading font-bold text-lg text-primary-foreground leading-snug whitespace-pre-line">
                   {product.title}
                 </h3>
-                <p className="text-muted-foreground font-light text-sm leading-relaxed mb-4">
-                  {product.description}
-                </p>
-                <a
-                  href="#"
-                  className="text-primary font-heading font-semibold text-sm tracking-wide hover:underline underline-offset-4 inline-flex items-center gap-1"
-                >
-                  Khám phá →
-                </a>
               </div>
             </div>
           ))}

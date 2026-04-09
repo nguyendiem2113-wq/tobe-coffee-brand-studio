@@ -25,36 +25,36 @@ const articles = [
 
 const NewsSection = () => {
   return (
-    <section id="news" className="section-padding bg-secondary">
+    <section id="news" className="section-padding">
       <div className="container mx-auto px-4 lg:px-8">
-        <div className="text-center mb-16 fade-in-up">
-          <h2 className="font-heading font-bold text-3xl md:text-4xl lg:text-5xl text-primary">
+        <div className="text-center mb-10 fade-in-up">
+          <h2 className="font-heading font-bold text-2xl md:text-3xl lg:text-4xl text-primary">
             Góc lắng đọng
           </h2>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-3 gap-6">
           {articles.map((article, index) => (
             <article
               key={article.title}
-              className="fade-in-up group cursor-pointer bg-background rounded overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500"
+              className="fade-in-up group cursor-pointer bg-background rounded overflow-hidden shadow-sm hover:shadow-lg transition-all duration-500"
               style={{ transitionDelay: `${index * 100}ms` }}
             >
               <div className="overflow-hidden">
                 <img
                   src={article.image}
                   alt={article.title}
-                  className="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-700"
+                  className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-700"
                   loading="lazy"
                   width={800}
                   height={600}
                 />
               </div>
-              <div className="p-6">
-                <h3 className="font-heading font-bold text-lg text-foreground mb-3 group-hover:text-primary transition-colors leading-snug">
+              <div className="p-5">
+                <h3 className="font-heading font-bold text-base text-foreground mb-2 group-hover:text-primary transition-colors leading-snug">
                   {article.title}
                 </h3>
-                <p className="text-muted-foreground font-light text-sm leading-relaxed mb-4">
+                <p className="text-muted-foreground font-light text-sm leading-relaxed mb-3">
                   {article.excerpt}
                 </p>
                 <span className="text-primary font-heading font-semibold text-sm tracking-wide hover:underline underline-offset-4">
