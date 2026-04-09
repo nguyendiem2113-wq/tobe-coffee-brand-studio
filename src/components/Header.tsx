@@ -26,7 +26,7 @@ const Header = () => {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
           ? "bg-background/95 backdrop-blur-md shadow-sm"
-          : "bg-foreground/30 backdrop-blur-sm"
+          : "bg-foreground/40 backdrop-blur-sm"
       }`}
     >
       <div className="container mx-auto flex items-center justify-between h-20 px-4 lg:px-8">
@@ -41,7 +41,11 @@ const Header = () => {
             <a
               key={item.label}
               href={item.href}
-              className="text-sm font-medium font-heading tracking-wide text-foreground/80 hover:text-primary transition-colors uppercase"
+              className={`text-sm font-medium font-heading tracking-wide transition-colors uppercase ${
+                scrolled
+                  ? "text-foreground/80 hover:text-primary"
+                  : "text-primary-foreground hover:text-primary-foreground/70"
+              }`}
             >
               {item.label}
             </a>
@@ -50,17 +54,17 @@ const Header = () => {
 
         {/* Icons */}
         <div className="flex items-center gap-4">
-          <button className="text-foreground/70 hover:text-primary transition-colors" aria-label="Tìm kiếm">
+          <button className={`${scrolled ? "text-foreground/70" : "text-primary-foreground/90"} hover:text-primary transition-colors`} aria-label="Tìm kiếm">
             <Search size={20} strokeWidth={1.5} />
           </button>
-          <button className="relative text-foreground/70 hover:text-primary transition-colors" aria-label="Giỏ hàng">
+          <button className={`relative ${scrolled ? "text-foreground/70" : "text-primary-foreground/90"} hover:text-primary transition-colors`} aria-label="Giỏ hàng">
             <ShoppingCart size={20} strokeWidth={1.5} />
             <span className="absolute -top-1.5 -right-1.5 bg-primary text-primary-foreground text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">
               0
             </span>
           </button>
           <button
-            className="lg:hidden text-foreground/70"
+            className={`lg:hidden ${scrolled ? "text-foreground/70" : "text-primary-foreground/90"}`}
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label="Menu"
           >
