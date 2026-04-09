@@ -29,7 +29,7 @@ const ProcessSection = () => {
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="container mx-auto px-4 lg:px-8">
               <div className="grid grid-cols-3 gap-6 md:gap-12 text-center">
-                {stats.map((stat, i) => (
+                {stats.map((stat) => (
                   <div key={stat.value} className="flex flex-col items-center">
                     <span className="font-heading font-black text-3xl md:text-5xl lg:text-6xl text-primary-foreground block mb-1">
                       {stat.value}
