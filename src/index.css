@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,47 +6,56 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 0 0% 10%;
+    /* TOBE Coffee brand system */
+    --espresso: 20 18% 10%;      /* #1E1815 */
+    --caramel: 35 47% 60%;       /* #C9A06B */
+    --ivory: 48 45% 95%;         /* #F8F5EB */
+    --mocha: 25 24% 24%;         /* #4B3A2E */
+    --stone: 35 25% 87%;         /* #E7E0D6 */
+
+    --background: var(--ivory);
+    --foreground: var(--espresso);
 
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 10%;
+    --card-foreground: var(--espresso);
 
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 10%;
+    --popover-foreground: var(--espresso);
 
-    --primary: 358 78% 50%;
-    --primary-foreground: 0 0% 100%;
+    --primary: var(--caramel);
+    --primary-foreground: var(--espresso);
 
-    --secondary: 0 0% 96%;
-    --secondary-foreground: 0 0% 10%;
+    --secondary: var(--stone);
+    --secondary-foreground: var(--espresso);
 
-    --muted: 0 0% 96%;
-    --muted-foreground: 0 0% 45%;
+    --muted: var(--stone);
+    --muted-foreground: var(--mocha);
 
-    --accent: 358 78% 96%;
-    --accent-foreground: 358 78% 40%;
+    --accent: var(--caramel);
+    --accent-foreground: var(--espresso);
 
-    --destructive: 0 84.2% 60.2%;
+    --destructive: 0 60% 42%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 0 0% 90%;
-    --input: 0 0% 90%;
-    --ring: 358 78% 50%;
+    --border: var(--stone);
+    --input: var(--stone);
+    --ring: var(--caramel);
 
     --radius: 0.25rem;
 
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 0 0% 10%;
-    --sidebar-primary: 358 78% 50%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 0 0% 96%;
-    --sidebar-accent-foreground: 0 0% 10%;
-    --sidebar-border: 0 0% 90%;
-    --sidebar-ring: 358 78% 50%;
+    --sidebar-background: var(--ivory);
+    --sidebar-foreground: var(--espresso);
+    --sidebar-primary: var(--caramel);
+    --sidebar-primary-foreground: var(--espresso);
+    --sidebar-accent: var(--stone);
+    --sidebar-accent-foreground: var(--espresso);
+    --sidebar-border: var(--stone);
+    --sidebar-ring: var(--caramel);
 
-    --font-heading: 'Montserrat', sans-serif;
-    --font-body: 'Montserrat', sans-serif;
+    --font-heading: 'Cormorant Garamond', 'Canela', Georgia, serif;
+    --font-body: 'Inter', system-ui, sans-serif;
+
+    --shadow-soft: 0 1px 2px hsl(var(--espresso) / 0.04), 0 8px 24px -16px hsl(var(--espresso) / 0.18);
   }
 }
 
@@ -55,34 +64,62 @@
     @apply border-border;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     @apply bg-background text-foreground font-body antialiased;
+    font-size: 16px;
+    line-height: 1.625;
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
+    font-weight: 400;
+  }
+
+  h3, h4, h5, h6 {
+    font-family: var(--font-body);
+    font-weight: 600;
   }
 }
 
 @layer utilities {
-  .font-heading {
-    font-family: var(--font-heading);
-  }
+  .font-heading { font-family: var(--font-heading); }
+  .font-body { font-family: var(--font-body); }
 
-  .font-body {
-    font-family: var(--font-body);
+  .h1-display {
+    @apply font-heading text-[2.75rem] leading-[1.05] md:text-6xl lg:text-[4.5rem] lg:leading-[1.11];
+  }
+  .h2-display {
+    @apply font-heading text-[2rem] leading-[1.15] md:text-[2.5rem] lg:text-5xl lg:leading-[1.16];
+  }
+  .h3-title {
+    @apply font-body text-lg md:text-xl font-semibold leading-[1.4];
+  }
+  .caption {
+    @apply font-body text-xs font-medium tracking-[0.18em] uppercase leading-[1.5];
   }
 }
 
 @layer components {
-  .section-padding {
-    @apply py-8 md:py-12 lg:py-16;
+  .section {
+    @apply py-16 md:py-24 lg:py-28;
+  }
+
+  .shell {
+    @apply mx-auto w-full max-w-[1320px] px-5 md:px-8 lg:px-12;
+  }
+
+  .rule {
+    @apply h-px w-full bg-border;
   }
 
   .fade-in-up {
     opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
   }
 
   .fade-in-up.visible {
